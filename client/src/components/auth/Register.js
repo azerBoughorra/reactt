@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react'
-import axios from 'axios';
 import { createStore } from 'redux';
 import authReducer from '../../reducers/authReducer';
 import { registerUser } from '../../actions/authActions';
@@ -22,7 +21,7 @@ const Register = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if(password !== password){
+    if(password !== ''){
       console.log('Password does not match');
     }else{
       registerUser(formData,[])(store.dispatch)
