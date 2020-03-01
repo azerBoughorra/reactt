@@ -21,10 +21,12 @@ router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
 router.post("/register", (req, res) => {
   // Form validation
 
-  const { errors, isValid } = validateRegisterInput(req.body);
+  console.log('registerrrr', req.body);
+
+  // const { errors, isValid } = validateRegisterInput(req.body);
 
   // Check validation
-  if (!isValid) {
+  if (!true) {
     return res.status(400).json(errors);
   }
 

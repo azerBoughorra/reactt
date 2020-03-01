@@ -7,6 +7,8 @@ import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
 import Login from './components/auth/Login';
 import './App.css';
+import { ProtectedRoute } from './utils/protected.route';
+import { Logged } from './components/dashboard/logged';
 
 const App = () => 
   <Router>
@@ -18,7 +20,7 @@ const App = () =>
       <Switch>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/dash" component={Dashboard} />
+        <ProtectedRoute exact path="/logged" component={Logged} />
       </Switch>
     </section>
   </Fragment>

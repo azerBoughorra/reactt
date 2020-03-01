@@ -3,7 +3,7 @@ import { loginUser } from '../../actions/authActions';
 import { createStore } from 'redux';
 import authReducer from '../../reducers/authReducer';
 
-const Login = () => {
+const Login = (props) => {
 
   const store = createStore(authReducer);
 
@@ -14,15 +14,24 @@ const Login = () => {
 
   const { email, password } = formData
   store.subscribe(d => {
-    console.log('NGRX',d);
+    console.log('NGRX', d);
   })
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     console.log('test', formData);
-    
 
-    loginUser(formData)(store.dispatch);
+
+    loginUser(formData)
+      .then(data => {
+        console.log(data);
+        localStorage.setItem("jwtToken", data.token);
+        props.history.push("/logged");
+        
+      })
+      .catch(err => {
+        alert('email or password is wrong')
+      });
 
   }
   return <section className="container">

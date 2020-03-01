@@ -21,7 +21,7 @@ const Register = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if(password !== ''){
+    if(password == ''){
       console.log('Password does not match');
     }else{
       registerUser(formData,[])(store.dispatch)
