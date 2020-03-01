@@ -25,9 +25,8 @@ const Login = (props) => {
     loginUser(formData)
       .then(data => {
         console.log(data);
-        localStorage.setItem("jwtToken", data.token);
+        localStorage.setItem("jwtToken", data.data.token);
         props.history.push("/logged");
-        
       })
       .catch(err => {
         alert('email or password is wrong')
