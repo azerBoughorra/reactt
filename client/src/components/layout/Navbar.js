@@ -12,27 +12,28 @@ export const Navbarr = () => {
     logoutUser()(dispatch)
 
   }
-  if (authInformation.isAuthenticated) {
-    return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Link to="/"><Navbar.Brand href="#">House Me Now</Navbar.Brand></Link>
-        <Nav className="mr-auto">
-          <Nav.Link onClick={() => disconnect()} href="#features">logout</Nav.Link>
 
-        </Nav>
-      </Navbar>
-    )
-  }
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Link to="/"><Navbar.Brand href="#">House Me Now</Navbar.Brand></Link>
+      <Link to="/"><Navbar.Brand>House Me Now</Navbar.Brand></Link>
       <Nav className="mr-auto">
+        {
 
-        <Link to="/register"><Nav.Link href="#features">Register</Nav.Link></Link>
-        <Link to="/login"><Nav.Link href="#pricing">Login</Nav.Link></Link>
+          (authInformation.isAuthenticated) ?
+            (<Nav.Link onClick={() => disconnect()} href="#features">logout</Nav.Link>)
+            :
+            (<div>
+              <Link to="/register">Register</Link>
+              <Link to="/login">Login</Link>
+            </div>
+            )
+        }
+
+
       </Nav>
     </Navbar>
   )
+
 }
 
 export default Navbarr;
