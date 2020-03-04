@@ -6,8 +6,7 @@ import allReducers from './reducers'
 import { Provider } from 'react-redux';
 import { synchroniseUserState } from './actions/authActions';
 
-const store = createStore(allReducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 synchroniseUserState(store.dispatch)
 ReactDOM.render(
     <Provider store={store}>

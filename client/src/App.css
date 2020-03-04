@@ -1,3 +1,4 @@
+
 :root {
   --primary-color: #17a2b8;
   --dark-color: #343a40;
@@ -329,23 +330,6 @@ img {
 }
 
 /* Landing Page */
-.landing {
-  position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
-  height: 100vh;
-}
-
-.img-car-1 {
-  background: url('./img/img-car-1.jpg') no-repeat center center/cover;
-}
-
-.img-car-2 {
-  background: url('./img/img-car-2.jpg') no-repeat center center/cover;
-}
-
-.img-car-3 {
-  background: url('./img/img-car-3.jpg') no-repeat center center/cover;
-}
 
 .landing-inner {
   color: #fff;
@@ -619,3 +603,35 @@ img {
   background-color: var(--dark-color);
   color: white;
 }
+
+/* Carousel */
+.carousel-inner {
+  height: 100%;
+}
+
+.carousel-item {
+  visibility: inherit !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Cards */
+/* 
+.card {
+  max-width: 400px;
+  width: 400px;
+  height: 400px;
+  max-height: 400px;
+}
+.card-img {
+  max-width: 400px;
+  width: 400px;
+  height: 400px;
+  max-height: 400px;
+}
+.card-img-overlay {
+  max-width: 400px;
+  width: 400px;
+  height: 400px;
+  max-height: 400px;
+} */
