@@ -4,10 +4,13 @@ import { Nav, Navbar } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 import { selectAuthInformation } from '../../redux-selectors/auth.selector';
+import { selectReservedHouses } from '../../redux-selectors/guest-house.selectors';
 
 export const Navbarr = () => {
   const dispatch = useDispatch();
   const authInformation = useSelector(selectAuthInformation);
+  const reservedHouses = useSelector(selectReservedHouses);
+
   const disconnect = () => {
     logoutUser()(dispatch)
 
@@ -15,7 +18,7 @@ export const Navbarr = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Link to="/"><Navbar.Brand>House Me Now</Navbar.Brand></Link>
-      <Nav className="mr-auto">
+      <Nav>
         {
 
           (authInformation.isAuthenticated) ?
@@ -28,7 +31,7 @@ export const Navbarr = () => {
             )
         }
 
-
+        {reservedHouses.length}
       </Nav>
     </Navbar>
   )
