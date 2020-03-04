@@ -1,0 +1,1 @@
+export const selectReservedHouses = (state) => state.guestHouse.reservedHouses;
