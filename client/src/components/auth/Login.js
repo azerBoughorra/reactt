@@ -5,6 +5,7 @@ import authReducer from '../../reducers/authReducer';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { selectErrors } from '../../redux-selectors/error.selector';
 import { selectAuthInformation } from '../../redux-selectors/auth.selector';
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
 
@@ -38,7 +39,7 @@ const Login = (props) => {
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead"><i className="fas fa-user"></i> Sign into Your Account</p>
       {error ? Object.keys(error).map(k =>
-        (<div class="alert alert-danger" role="alert">
+        (<div className="alert alert-danger" role="alert">
           {error[k]}
         </div>)) : null
       }
@@ -65,7 +66,7 @@ const Login = (props) => {
         <input type="button" className="btn btn-primary" onClick={e => onSubmit(e)} value="Login" />
       </form>
       <p className="my-1">
-        Don't have an account? <a href="register.html">Sign Up</a>
+        Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
 
     </section>

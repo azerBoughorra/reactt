@@ -3,6 +3,7 @@ import { createStore } from 'redux';
 import authReducer from '../../reducers/authReducer';
 import { registerUser } from '../../actions/authActions';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Register = (props) => {
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ const Register = (props) => {
       <input type="submit" className="btn btn-primary" value="Register" />
     </form>
     <p className="my-1">
-      Already have an account? <a href="login.html">Sign In</a>
+      Already have an account? <Link to="/login">Sign In</Link>
     </p>
   </Fragment>
 };
