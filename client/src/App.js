@@ -20,7 +20,7 @@ const App = () =>
       <Switch>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
-        <ProtectedRoute exact path="/logged" component={Logged} />
+        <ProtectedRoute exact path="/logged" component={Dashboard} />
       </Switch>
     </section>
   </Fragment>
