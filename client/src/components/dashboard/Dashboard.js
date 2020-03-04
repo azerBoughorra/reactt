@@ -1,80 +1,46 @@
 
 import React, { Component } from "react";
 import Card from 'react-bootstrap/Card'
-import CardDeck from 'react-bootstrap/CardDeck'
-import img from './../../img/img-car-1.jpg'
+import axios from "axios";
+import useDispatch from 'react-redux';
 
 class Dashboard extends Component {
+  dispatch = useDispatch();
+
+  state = {
+    houses: []
+  }
+
+  findGuestHouse() {
+    axios
+      .get("/api/house/findAll")
+      .then(res => { this.setState({ houses: res.data }) })
+  }
+
+
   render() {
+    this.findGuestHouse();
     return (
-      <CardDeck>
-        <Card className="bg-dark text-white">
-          <Card.Img src={img} alt="Card image" className="card-img"/>
-          <Card.ImgOverlay>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.
-            </Card.Text>
-            <Card.Text>Last updated 3 mins ago</Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-        <Card className="bg-dark text-white">
-          <Card.Img src={img} alt="Card image" className="card-img"/>
-          <Card.ImgOverlay>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.
-            </Card.Text>
-            <Card.Text>Last updated 3 mins ago</Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-        <Card className="bg-dark text-white">
-          <Card.Img src={img} alt="Card image" className="card-img"/>
-          <Card.ImgOverlay>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.
-            </Card.Text>
-            <Card.Text>Last updated 3 mins ago</Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-        <Card className="bg-dark text-white">
-          <Card.Img src={img} alt="Card image" className="card-img"/>
-          <Card.ImgOverlay>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.
-            </Card.Text>
-            <Card.Text>Last updated 3 mins ago</Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-        <Card className="bg-dark text-white">
-          <Card.Img src={img} alt="Card image" className="card-img"/>
-          <Card.ImgOverlay>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.
-            </Card.Text>
-            <Card.Text>Last updated 3 mins ago</Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-        <Card className="bg-dark text-white">
-          <Card.Img src={img} alt="Card image" className="card-img"/>
-          <Card.ImgOverlay>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.
-            </Card.Text>
-            <Card.Text>Last updated 3 mins ago</Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-      </CardDeck>
+      <div className="container">
+        {this.state.houses.length > 0 ?
+          this.state.houses.map(house =>
+            <Card className="bg-dark text-white">
+              <Card.Img src={house.image} alt="Card image" className="card-img" />
+              <Card.ImgOverlay>
+                <Card.Title>{house.name}</Card.Title>
+                <Card.Text>{house.region}</Card.Text>
+                <Card.Text>
+                  {house.description}
+                </Card.Text>
+                <Card.Text>{house.rating}</Card.Text>
+                <Card.Footer>
+                <button variant="primary" onClick={useDispatch(Reserve)}>Go somewhere</button>
+                </Card.Footer>
+              </Card.ImgOverlay>
+            </Card>
+          ) : null
+        }
+      </div>
     )
   }
 }

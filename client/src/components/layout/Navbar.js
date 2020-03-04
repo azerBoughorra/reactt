@@ -15,24 +15,24 @@ export const Navbarr = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Link to="/"><Navbar.Brand>House Me Now</Navbar.Brand></Link>
-      <Nav className="mr-auto">
-        {
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
 
-          (authInformation.isAuthenticated) ?
-            (<Nav.Link onClick={() => disconnect()} href="#features">logout</Nav.Link>)
-            :
-            (<div>
-              <Link to="/register">Register</Link>
-              <Link to="/login">Login</Link>
-            </div>
-            )
-        }
-
-
-      </Nav>
-    </Navbar>
+        <Nav>
+          {
+            (authInformation.isAuthenticated) ?
+              (<Nav.Link onClick={() => disconnect()} href="#features">logout</Nav.Link>)
+              :
+              (<div>
+                <Link to="/register">Register</Link>
+                <Link to="/login">Login</Link>
+              </div>
+              )
+          }
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar >
   )
-
 }
 
 export default Navbarr;
