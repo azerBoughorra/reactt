@@ -18,7 +18,6 @@ export const Navbarr = () => {
         <Link to="/"><Navbar.Brand href="#">House Me Now</Navbar.Brand></Link>
         <Nav className="mr-auto">
           <Nav.Link onClick={() => disconnect()} href="#features">logout</Nav.Link>
-
         </Nav>
       </Navbar>
     )
