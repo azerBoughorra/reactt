@@ -32,6 +32,7 @@ export const Navbarr = () => {
               </div>
               )
           }
+          {reservedHouses.length}
         </Nav>
       </Navbar.Collapse>
     </Navbar >
