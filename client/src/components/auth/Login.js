@@ -71,7 +71,7 @@ const Login = (props) => {
 
     </section>
   } else {
-    props.history.push("/logged")
+    props.history.push("/")
     return null
   }
 

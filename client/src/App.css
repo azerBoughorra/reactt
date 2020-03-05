@@ -1,4 +1,3 @@
-
 :root {
   --primary-color: #17a2b8;
   --dark-color: #343a40;
@@ -14,11 +13,7 @@
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  background-color: #fff;
-  color: #333;
+  background: radial-gradient(#e5e5e5, "#ffff", "#e5e5e5");
 }
 
 a {
@@ -298,6 +293,15 @@ img {
 }
 
 /* Navbar */
+.primary-navbar {
+  color: var(--dark-color);
+  background-color: var(--dark-color);
+}
+
+.brand-name {
+  color: var(--light-color) !important;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -309,6 +313,10 @@ img {
   top: 0;
   border-bottom: solid 1px var(--primary-color);
   opacity: 0.9;
+}
+
+nav a {
+  padding: 20px;
 }
 
 /* Landing Page */
@@ -595,4 +603,36 @@ img {
   visibility: inherit !important;
   width: 100% !important;
   height: 100% !important;
+}
+
+.cart-items {
+  text-align: center;
+  line-height: initial;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  height: 22px;
+  width: 22px;
+  color: var(--light-color);
+  margin-top: 22%;
+}
+
+.fa-shopping-cart {
+  line-height: inherit;
+  text-align: center;
+  padding: 0px 20px 0px 8px;
+  margin-top: 5%;
+  color: white;
+  cursor: pointer;
+}
+
+.navbar-collapse {flex-flow: row-reverse;}
+
+.p-dialog-content {
+  width: 600px;
+  height: 300px;
+}
+.chart-dialog .p-dialog-content {
+  width: 50vw;
+  height: 100vh;
+  padding: 100px;
 }

@@ -6,6 +6,9 @@ import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
 import Login from './components/auth/Login';
 import './App.css';
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 import { ProtectedRoute } from './utils/protected.route';
 import { Logged } from './components/dashboard/logged';
 
