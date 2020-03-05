@@ -1,4 +1,4 @@
-import { RESERVE_HOUSE } from "../actions/types";
+import { RESERVE_HOUSE, CANCEL_RESERVE_HOUSE } from "../actions/types";
 
 const isEmpty = require("is-empty");
 
@@ -17,6 +17,10 @@ export default function (state = initialState, action) {
                     action.payload
                 ],
             };
+        case CANCEL_RESERVE_HOUSE:
+            state.reservedHouses = state.reservedHouses.filter(h => h._id != action.payload)
+            return state
+
         default:
             return state;
     }
