@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { reserveHouseAction, cancelReserveHouseAction } from "../../redux-actions/guest-house.actions";
 import { selectReservedHouses } from "../../redux-selectors/guest-house.selectors";
 import { Button, Modal } from "react-bootstrap";
-// import DatePicker from "react-datepicker";
+import DatePicker from "react-datepicker";
 import { Row, Col } from "react-bootstrap"
 
 const Dashboard = () => {
@@ -37,11 +37,11 @@ const Dashboard = () => {
 
 
   const updateSearchRegion = (event) => {
-    setSearchByRegion({ searchByRegion: event.target.value.substr(0, 20) });
+    setSearchByRegion(event.target.value.substr(0, 20));
   }
 
   const updateSearchName = (event) => {
-    setSearchByName({ searchByName: event.target.value.substr(0, 20) });
+    setSearchByName(event.target.value.substr(0, 20));
   }
 
   return (
@@ -53,7 +53,7 @@ const Dashboard = () => {
       </Row>
       {houses && houses.length > 0 ?
         houses.map(house => {
-          if (house.name.indexOf(searchByName) !== -1 && house.region.indexOf(searchByRegion) !== -1 ) {
+          if (house.name.toLowerCase().indexOf(searchByName) !== -1 && house.region.toLowerCase().indexOf(searchByRegion) !== -1 ) {
           return (
             <Card className="bg-dark text-white">
               <Card.Img src={house.image} alt="Card image" className="card-img" />
@@ -86,7 +86,7 @@ const Dashboard = () => {
         </Modal.Header>
         <Modal.Body>
           Date de reservation :
-          {/* <DatePicker onChange={date => setselectedHouse({ ...selectedHouse, reserveDate: date })} /> */}
+          <DatePicker onChange={date => setselectedHouse({ ...selectedHouse, reserveDate: date })} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
