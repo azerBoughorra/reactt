@@ -2,7 +2,8 @@
 import React, { Component } from "react";
 import Card from 'react-bootstrap/Card'
 import axios from "axios";
-import useDispatch from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { reserveHouseAction } from "../../redux-actions/guest-house.actions";
 
 class Dashboard extends Component {
   dispatch = useDispatch();
@@ -34,7 +35,7 @@ class Dashboard extends Component {
                 </Card.Text>
                 <Card.Text>{house.rating}</Card.Text>
                 <Card.Footer>
-                <button variant="primary" onClick={useDispatch(Reserve)}>Go somewhere</button>
+                <button variant="primary" onClick={this.dispatch(reserveHouseAction(house))}>Go somewhere</button>
                 </Card.Footer>
               </Card.ImgOverlay>
             </Card>

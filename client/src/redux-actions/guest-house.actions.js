@@ -1,6 +1,8 @@
+import { RESERVE_HOUSE } from "../actions/types";
+
 export const reserveHouseAction = house => {
     return {
-        type: SET_CURRENT_USER,
+        type: RESERVE_HOUSE,
         payload: house
     };
 };
