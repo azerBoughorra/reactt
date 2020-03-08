@@ -13,7 +13,7 @@ import { selectAuthInformation } from '../../redux-selectors/auth.selector';
 
 export const Card = (props) => {
     console.log('props', props);
-    
+
     const dispatch = useDispatch();
 
     const [show, setShow] = useState(false);
@@ -25,7 +25,7 @@ export const Card = (props) => {
         if (authInfo.isAuthenticated) {
             setselectedHouse(house)
             setShow(true)
-        }else{
+        } else {
             props.history.push('/login')
         }
 
@@ -54,12 +54,19 @@ export const Card = (props) => {
                 <p className="card-text text-secondary">
                     {props.house.description}
                 </p>
-                {
-                    reservation.find(h => h._id === props.house._id) ?
-                        <Button variant="warning" onClick={() => dispatch(cancelReserveHouseAction(props.house._id))}>Annuler la reservation</Button>
-                        :
-                        <Button variant="primary" onClick={() => handleShow(props.house)}>Reserver</Button>
 
+               
+                {
+                    (!authInfo.user.isAdmin) ?
+                    
+                        reservation.find(h => h._id === props.house._id) ?
+                            <Button variant="warning" onClick={() => dispatch(cancelReserveHouseAction(props.house._id))}>Annuler la reservation</Button>
+                            :
+                            <Button variant="primary" onClick={() => handleShow(props.house)}>Reserver</Button>
+                        :
+                        (
+                            <Button variant="danger" onClick={props.onDelete}>Supprimer</Button>
+                        )
                 }
                 {props.house.reserveDate ? (<p className="card-text text-secondary">
                     {props.house.reserveDate.toString()}

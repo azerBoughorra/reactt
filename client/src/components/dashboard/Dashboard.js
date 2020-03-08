@@ -9,7 +9,18 @@ const Dashboard = (props) => {
 
   const [searchByRegion, setSearchByRegion] = useState('');
   const [searchByName, setSearchByName] = useState('');
+ 
+  const deleteHouse = (house) => {
+    console.log(house);
 
+    axios
+      .delete("/api/house/delete/" + house._id)
+      .then(res => {
+        setHouses(houses.filter(h => h != house))
+        console.log('res', res);
+      })
+
+  }
 
   if (!houses) {
     axios
@@ -38,21 +49,19 @@ const Dashboard = (props) => {
         </div>
         <div className="row">
           {houses && houses.length > 0 ?
-            houses.map(house => {
+            houses.map((house, i) => {
               if (house.name.toLowerCase().indexOf(searchByName) !== -1 && house.region.toLowerCase().indexOf(searchByRegion) !== -1) {
                 return (
-                  <div className="col-md-4 dash-card">
-                    <CardUI house={house} history={props.history}/>
+                  <div key={i} className="col-md-4 dash-card">
+                    <CardUI onDelete={() => deleteHouse(house)} house={house} history={props.history} />
                   </div>
                 )
               }
               else { return '' }
-            }) :  null
+            }) : null
           }
         </div>
       </div>
-
-
     </div >
 
   )

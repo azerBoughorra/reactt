@@ -1,13 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
-const passport = require("passport");
 
-// Load input validation
-const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login");
+
+
 
 // Load User model
 const GuestHouse = require("../../models/guest-house");
@@ -33,6 +28,26 @@ router.get('/findAll', (req, res) => {
     })
 })
 
+router.post('/add', (req, res) => {
 
+    const x = new GuestHouse({
+        ...req.body,
+        rating: 3,
+        disponibility: true,
+    });
+    x.save().then(data => {
+        return res.json(data);
+    })
+
+})
+
+router.delete('/delete/:id', (req, res) => {
+    id = req.params.id
+    GuestHouse.deleteOne({ _id: id }, (data) => {
+        return res.json(data);
+    })
+
+
+})
 
 module.exports = router;

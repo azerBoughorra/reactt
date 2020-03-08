@@ -11,6 +11,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import { ProtectedRoute } from './utils/protected.route';
 import { Logged } from './components/dashboard/logged';
+import { addHouse } from './components/add-house/add.house';
 
 const App = () =>
   <Router>
@@ -23,6 +24,8 @@ const App = () =>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/logged" component={Logged} />
+          <ProtectedRoute exact path="/add" component={addHouse} />
+
         </Switch>
       </section>
     </Fragment>

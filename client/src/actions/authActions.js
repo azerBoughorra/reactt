@@ -6,6 +6,9 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
 import { setCurrentUserAction } from "../redux-actions/auth.actions";
 import { setErrorAction } from "../redux-actions/errors.actions";
 
+const adminId = '5e64466f762117258808dc48';
+
+
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
@@ -33,6 +36,7 @@ export const loginUser = userData => dispatch => {
       setAuthToken(token);
       // Decode token to get user data
       const decoded = jwt_decode(token);
+      decoded.isAdmin = decoded.id == adminId;
       // Set current user
       dispatch(setCurrentUserAction(decoded));
       dispatch(setErrorAction({}))
@@ -46,6 +50,8 @@ export const synchroniseUserState = (dispatch) => {
   const jwt = localStorage.getItem('jwtToken')
   if (jwt) {
     const decoded = jwt_decode(jwt);
+    decoded.isAdmin = decoded.id == adminId;
+
     // Set current user
     dispatch(setCurrentUserAction(decoded));
   }
