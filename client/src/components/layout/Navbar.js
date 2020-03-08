@@ -18,11 +18,11 @@ export const Navbarr = (props) => {
     logoutUser()(dispatch)
 
   }
-  const add = () => { 
+  const add = () => {
     console.log(props);
-    
+
     props.history.push('/add')
-   }
+  }
 
 
 
@@ -43,7 +43,11 @@ export const Navbarr = (props) => {
             (authInformation.isAuthenticated) ?
               (
                 <Nav>
-                  <Link className="nav-link" to="/add">Add house</Link>
+                  {
+                    authInformation.user.isAdmin ?
+                      <Link className="nav-link" to="/add">Add house</Link>
+                      : ''
+                  }
                   <Nav.Link onClick={() => disconnect()} href="#features">logout</Nav.Link>
                   <i className="fas fa-shopping-cart" onClick={handleShow}></i>
                   <span className="cart-items">{reservedHouses.length}</span>
